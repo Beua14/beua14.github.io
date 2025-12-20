@@ -1,14 +1,249 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-<title>Meus Apps</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Store Clone</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --google-blue: #1a73e8;
+            --google-green: #01875f;
+            --bg-color: #ffffff;
+            --sidebar-color: #f8f9fa;
+            --text-main: #202124;
+            --text-sec: #5f6368;
+            --border: #dadce0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Menu Lateral (Desktop) */
+        nav.sidebar {
+            width: 250px;
+            background: var(--sidebar-color);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: var(--text-sec);
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-item.active {
+            background-color: #e8f0fe;
+            color: var(--google-blue);
+        }
+
+        /* Área Principal */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 40px;
+        }
+
+        /* Barra de Busca Estilo Google */
+        .search-container {
+            max-width: 700px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: #f1f3f4;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-sec);
+        }
+
+        /* Grid de Apps */
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 30px;
+        }
+
+        .app-item {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .app-item:hover {
+            transform: scale(1.03);
+        }
+
+        .app-thumb {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #e9ecef;
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .app-info h4 {
+            font-size: 14px;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .app-info p {
+            font-size: 13px;
+            color: var(--text-sec);
+        }
+
+        .rating {
+            font-size: 12px;
+            color: var(--text-sec);
+            margin-top: 4px;
+        }
+
+        /* Estilo Mobile */
+        @media (max-width: 768px) {
+            nav.sidebar { display: none; }
+            main { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
-<h1>Meus Aplicativos</h1>
-<p>Clique abaixo para baixar</p>
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fab fa-google-play" style="color: #4285f4;"></i>
+            Apps Libros
+        </div>
+        <a href="#" class="nav-item active"><i class="fas fa-th-large"></i> Apps</a>
+        <a href="#" class="nav-item"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="#" class="nav-item"><i class="fas fa-mobile-alt"></i> Dispositivos</a>
+    </nav>
 
-<a href="LINK_DO_APK">Baixar App</a>
+    <main>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Pesquisar apps e jogos">
+        </div>
+
+        <h2 class="section-title">Recomendados para você</h2>
+
+        <div class="app-grid">
+            <div class="app-item">
+                <div class="app-thumb" style="color: #01875f;">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="app-info">
+                    <h4>WhatsApp Messenger</h4>
+                    <p>Comunicação</p>
+                    <div class="rating">4,3 ★</div>
+                </div>
+            </div>
+
+            <div class="app-item">
+                <div class="app-thumb" style="color: #ea4335;">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <div class="app-info">
+                    <h4>YouTube Pro</h4>
+                    <p>Vídeos e música</p>
+                    <div class="rating">4,7 ★</div>
+                </div>
+            </div>
+
+            <div class="app-item">
+                <div class="app-thumb" style="color: #4285f4;">
+                    <i class="fab fa-facebook-messenger"></i>
+                </div>
+                <div class="app-info">
+                    <h4>Messenger</h4>
+                    <p>Redes sociais</p>
+                    <div class="rating">4,1 ★</div>
+                </div>
+            </div>
+
+            <div class="app-item">
+                <div class="app-thumb" style="color: #fbbc05;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="app-info">
+                    <h4>Turbo Booster</h4>
+                    <p>Ferramentas</p>
+                    <div class="rating">4,8 ★</div>
+                </div>
+            </div>
+            
+            <a href="SEU_ARQUIVO.apk" style="text-decoration: none; color: inherit;">
+                <div class="app-item">
+                    <div class="app-thumb" style="color: #000; background: #c1e8ff;">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="app-info">
+                        <h4>Baixar Meu App</h4>
+                        <p>Utilitário</p>
+                        <div class="rating">5,0 ★</div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </main>
 
 </body>
 </html>
