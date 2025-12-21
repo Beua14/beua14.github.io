@@ -68,7 +68,6 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
-        /* Box para as suas imagens de logo */
         .icon-box {
             width: 100px;
             height: 100px;
@@ -77,6 +76,9 @@
             border-radius: 22px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .icon-box img {
@@ -87,7 +89,7 @@
 
         .category { font-size: 0.75rem; font-weight: 800; color: var(--google-green); text-transform: uppercase; margin-bottom: 10px; display: block; }
         h3 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 12px; }
-        p.description { color: #5f6368; font-size: 0.95rem; line-height: 1.5; margin-bottom: 30px; }
+        p.description { color: #5f6368; font-size: 0.95rem; line-height: 1.5; margin-bottom: 30px; min-height: 60px; }
 
         .btn-install {
             display: inline-block;
@@ -118,22 +120,22 @@
     <div class="app-grid">
 
         <div class="app-card">
-            <span class="category">Jogo de Ação</span>
+            <span class="category">Educação / Quiz</span>
             <div class="icon-box">
                 <img src="logo-jogo.png" alt="Logo Acerta Mwangolé">
             </div>
             <h3>Acerta Mwangolé</h3>
-            <p class="description">Mostre sua habilidade e acerte os alvos neste desafio cultural épico.</p>
+            <p class="description">Mostre que você conhece tudo! Um desafio divertido de perguntas e respostas sobre a nossa cultura.</p>
             <a href="https://www.mediafire.com/file/gszztuj84m6knda/Acerta_Mwangole.apk/file" class="btn-install" target="_blank">Instalar</a>
         </div>
 
         <div class="app-card">
-            <span class="category">Utilitário</span>
+            <span class="category">Utilitário / Gestão</span>
             <div class="icon-box">
                 <img src="logo-caixa.png" alt="Logo Caixa RB">
             </div>
             <h3>Caixa-RB</h3>
-            <p class="description">Relatórios diários simples e inteligentes para sua gestão financeira.</p>
+            <p class="description">Relatórios diários simples e inteligentes para gerenciar suas finanças com rapidez.</p>
             <a href="https://rodrigsbeuagmailcom.itch.io/caixa-rb-relatrios-dirios-simples-e-inteligentes" class="btn-install" target="_blank">Instalar</a>
         </div>
 
