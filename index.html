@@ -16,15 +16,9 @@
             --text-dark: #2c3e50;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body {
-            /* Fundo Blue Sky com degradê suave */
             background: linear-gradient(180deg, var(--sky-blue) 0%, var(--sky-light) 100%);
             background-attachment: fixed;
             min-height: 100vh;
@@ -32,51 +26,23 @@
             flex-direction: column;
             align-items: center;
             padding: 40px 20px;
-            overflow-x: hidden;
             position: relative;
         }
 
-        /* Nuvens decorativas animadas */
         .cloud {
             position: fixed;
             color: white;
             opacity: 0.5;
             filter: blur(2px);
             z-index: -1;
-            font-size: 120px;
+            font-size: 100px;
             user-select: none;
-            animation: moveClouds 20s linear infinite;
         }
 
-        @keyframes moveClouds {
-            from { transform: translateX(-100px); }
-            to { transform: translateX(100px); }
-        }
+        header { text-align: center; margin-bottom: 50px; z-index: 1; }
+        header h1 { color: var(--text-dark); font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        header p { color: #576574; font-weight: 600; background: rgba(255, 255, 255, 0.3); padding: 5px 15px; border-radius: 20px; }
 
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            z-index: 1;
-        }
-
-        header h1 {
-            color: var(--text-dark);
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            color: #576574;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.3);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-
-        /* Grade de Aplicativos */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -86,7 +52,6 @@
             z-index: 1;
         }
 
-        /* Card estilo Play Store (Vidro) */
         .app-card {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(12px);
@@ -95,53 +60,35 @@
             padding: 35px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s ease;
         }
 
         .app-card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
         }
 
+        /* Box para as suas imagens de logo */
         .icon-box {
-            width: 90px;
-            height: 90px;
-            background: #ffffff;
-            border-radius: 22px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            overflow: hidden;
+            border-radius: 22px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            background: #fff;
         }
 
-        .category {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--google-green);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: block;
+        .icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        h3 {
-            color: var(--text-dark);
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
+        .category { font-size: 0.75rem; font-weight: 800; color: var(--google-green); text-transform: uppercase; margin-bottom: 10px; display: block; }
+        h3 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 12px; }
+        p.description { color: #5f6368; font-size: 0.95rem; line-height: 1.5; margin-bottom: 30px; }
 
-        p.description {
-            color: #5f6368;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 30px;
-            min-height: 45px;
-        }
-
-        /* Botão de Instalação */
         .btn-install {
             display: inline-block;
             background: var(--google-green);
@@ -150,68 +97,50 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.2s;
+            transition: 0.2s;
         }
 
-        .btn-install:hover {
-            background: #016d4d;
-            box-shadow: 0 8px 20px rgba(1, 135, 95, 0.3);
-            transform: scale(1.05);
-        }
+        .btn-install:hover { background: #016d4d; transform: scale(1.05); }
 
-        footer {
-            margin-top: auto;
-            padding: 40px 0;
-            color: #576574;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* Mobile */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .app-card { padding: 25px; }
-        }
+        footer { margin-top: auto; padding: 40px 0; color: #576574; font-size: 0.85rem; font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <div class="cloud" style="top: 10%; left: 10%;">☁</div>
-    <div class="cloud" style="top: 30%; right: 15%; animation-delay: 2s;">☁</div>
-    <div class="cloud" style="bottom: 20%; left: 20%; animation-delay: 5s;">☁</div>
+    <div class="cloud" style="top: 10%; left: 5%;">☁</div>
+    <div class="cloud" style="top: 50%; right: 10%;">☁</div>
 
     <header>
         <h1>Beua14 Store</h1>
-        <p>Apenas Aplicativos Oficiais</p>
+        <p>Aplicações Oficiais</p>
     </header>
 
     <div class="app-grid">
 
         <div class="app-card">
             <span class="category">Jogo de Ação</span>
-            <div class="icon-box" style="color: #e74c3c;">
-                <i class="fas fa-crosshairs"></i>
+            <div class="icon-box">
+                <img src="logo-jogo.png" alt="Logo Acerta Mwangolé">
             </div>
             <h3>Acerta Mwangolé</h3>
             <p class="description">Mostre sua habilidade e acerte os alvos neste desafio cultural épico.</p>
-            <a href="acerta-mwangole.apk" class="btn-install">Instalar</a>
+            <a href="https://www.mediafire.com/file/gszztuj84m6knda/Acerta_Mwangole.apk/file" class="btn-install" target="_blank">Instalar</a>
         </div>
 
         <div class="app-card">
-            <span class="category">Ferramenta / Finanças</span>
-            <div class="icon-box" style="color: #f39c12;">
-                <i class="fas fa-piggy-bank"></i>
+            <span class="category">Utilitário</span>
+            <div class="icon-box">
+                <img src="logo-caixa.png" alt="Logo Caixa RB">
             </div>
             <h3>Caixa-RB</h3>
-            <p class="description">O controle financeiro definitivo para gerenciar seus recursos com facilidade.</p>
-            <a href="caixa-rb.apk" class="btn-install">Instalar</a>
+            <p class="description">Relatórios diários simples e inteligentes para sua gestão financeira.</p>
+            <a href="https://rodrigsbeuagmailcom.itch.io/caixa-rb-relatrios-dirios-simples-e-inteligentes" class="btn-install" target="_blank">Instalar</a>
         </div>
 
     </div>
 
     <footer>
-        &copy; 2024 Beua14 Store • Feito com dedicação
+        &copy; 2025 Beua14 Store • Todos os direitos reservados.
     </footer>
 
 </body>
