@@ -803,12 +803,13 @@
         </div>
         <div class="admin-content">
             <div class="admin-section">
-                <h2>Adicionar Novo Aplicativo</h2>
-                <form onsubmit="addApp(event)">
+                <h2 id="formTitle">Adicionar Novo Aplicativo</h2>
+                <form id="appForm" onsubmit="saveApp(event)">
+                    <input type="hidden" id="editingAppId">
                     <div class="form-group">
                         <label>Imagem do App</label>
                         <div class="file-upload">
-                            <input type="file" id="appImage" accept="image/*" onchange="previewImage(event)" required>
+                            <input type="file" id="appImage" accept="image/*" onchange="previewImage(event)">
                             <div class="file-upload-label">
                                 <i class="fas fa-cloud-upload-alt"></i>
                                 <span>Clique para carregar imagem</span>
@@ -843,8 +844,11 @@
                         <label>Link de Download</label>
                         <input type="url" id="appLink" required>
                     </div>
-                    <button type="submit" class="btn-primary">
+                    <button type="submit" class="btn-primary" id="submitBtn">
                         <i class="fas fa-plus"></i> Adicionar Aplicativo
+                    </button>
+                    <button type="button" class="btn-primary" id="cancelEditBtn" onclick="cancelEdit()" style="display: none; margin-top: 10px; background: rgba(255,255,255,0.1);">
+                        <i class="fas fa-times"></i> Cancelar Edição
                     </button>
                 </form>
             </div>
@@ -1050,6 +1054,9 @@
                         <p>${app.category} • ${app.downloads} downloads</p>
                     </div>
                     <div class="app-item-actions">
+                        <button class="btn-edit" onclick="editApp(${app.id})">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
                         <button class="btn-delete" onclick="deleteApp(${app.id})">
                             <i class="fas fa-trash"></i> Excluir
                         </button>
@@ -1180,6 +1187,116 @@
                 alert('Aplicativo adicionado com sucesso!');
             };
             reader.readAsDataURL(imageFile);
+        }
+
+        // Edit app
+        function editApp(appId) {
+            const app = apps.find(a => a.id === appId);
+            if (!app) return;
+            
+            // Scroll to form
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Fill form with app data
+            document.getElementById('editingAppId').value = app.id;
+            document.getElementById('appName').value = app.name;
+            document.getElementById('appCategory').value = app.category;
+            document.getElementById('appDescription').value = app.description;
+            document.getElementById('appDownloads').value = app.downloads;
+            document.getElementById('appLink').value = app.link;
+            
+            // Show current image
+            const preview = document.getElementById('imagePreview');
+            preview.src = app.image;
+            preview.style.display = 'block';
+            
+            // Update form UI
+            document.getElementById('formTitle').textContent = 'Editar Aplicativo';
+            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-save"></i> Salvar Alterações';
+            document.getElementById('cancelEditBtn').style.display = 'block';
+            
+            // Make image upload optional when editing
+            document.getElementById('appImage').removeAttribute('required');
+        }
+
+        // Cancel edit
+        function cancelEdit() {
+            document.getElementById('appForm').reset();
+            document.getElementById('editingAppId').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('formTitle').textContent = 'Adicionar Novo Aplicativo';
+            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-plus"></i> Adicionar Aplicativo';
+            document.getElementById('cancelEditBtn').style.display = 'none';
+            document.getElementById('appImage').setAttribute('required', 'required');
+        }
+
+        // Save app (add or update)
+        async function saveApp(event) {
+            event.preventDefault();
+            
+            const editingId = document.getElementById('editingAppId').value;
+            const name = document.getElementById('appName').value;
+            const category = document.getElementById('appCategory').value;
+            const description = document.getElementById('appDescription').value;
+            const downloads = parseInt(document.getElementById('appDownloads').value);
+            const link = document.getElementById('appLink').value;
+            const imageFile = document.getElementById('appImage').files[0];
+            
+            if (editingId) {
+                // Update existing app
+                const app = apps.find(a => a.id == editingId);
+                if (app) {
+                    app.name = name;
+                    app.category = category;
+                    app.description = description;
+                    app.downloads = downloads;
+                    app.link = link;
+                    
+                    // Only update image if new one is selected
+                    if (imageFile) {
+                        const reader = new FileReader();
+                        reader.onload = async function(e) {
+                            app.image = e.target.result;
+                            await saveApps();
+                            cancelEdit();
+                            renderAdminApps();
+                            alert('Aplicativo atualizado com sucesso!');
+                        };
+                        reader.readAsDataURL(imageFile);
+                    } else {
+                        await saveApps();
+                        cancelEdit();
+                        renderAdminApps();
+                        alert('Aplicativo atualizado com sucesso!');
+                    }
+                }
+            } else {
+                // Add new app
+                if (!imageFile) {
+                    alert('Por favor, selecione uma imagem para o aplicativo.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    const newApp = {
+                        id: Date.now(),
+                        name,
+                        category,
+                        description,
+                        downloads,
+                        link,
+                        image: e.target.result
+                    };
+                    
+                    apps.push(newApp);
+                    await saveApps();
+                    cancelEdit();
+                    renderAdminApps();
+                    alert('Aplicativo adicionado com sucesso!');
+                };
+                reader.readAsDataURL(imageFile);
+            }
         }
 
         // Delete app
