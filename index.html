@@ -36,6 +36,7 @@
             position: relative;
         }
 
+        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -87,6 +88,7 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
+        /* Container */
         .container {
             position: relative;
             z-index: 1;
@@ -95,342 +97,7 @@
             padding: 60px 40px;
         }
 
-        /* Admin Button */
-        .admin-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .admin-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 32px rgba(0, 102, 255, 0.6);
-        }
-
-        /* Login Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .modal-header h2 {
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-btn:hover {
-            color: var(--text-primary);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .btn-primary {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 102, 255, 0.4);
-        }
-
-        /* Admin Panel */
-        .admin-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-            z-index: 3000;
-            overflow-y: auto;
-        }
-
-        .admin-panel.active {
-            display: block;
-        }
-
-        .admin-header {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--card-border);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .admin-header h1 {
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .btn-logout {
-            padding: 12px 24px;
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            border-radius: 12px;
-            color: #ff4444;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-logout:hover {
-            background: rgba(255, 0, 0, 0.2);
-        }
-
-        .admin-content {
-            padding: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .admin-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .admin-section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .apps-list {
-            display: grid;
-            gap: 20px;
-        }
-
-        .app-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .app-item-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .app-item-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .app-item-info {
-            flex: 1;
-        }
-
-        .app-item-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .app-item-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .app-item-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-edit,
-        .btn-delete {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-edit {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-edit:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-delete {
-            background: rgba(255, 0, 0, 0.1);
-            color: #ff4444;
-            border: 1px solid rgba(255, 0, 0, 0.3);
-        }
-
-        .btn-delete:hover {
-            background: rgba(255, 0, 0, 0.2);
-        }
-
-        .file-upload {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .file-upload input[type="file"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        .file-upload-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px dashed var(--card-border);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .file-upload-label:hover {
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .image-preview {
-            width: 100%;
-            max-width: 200px;
-            margin-top: 10px;
-            border-radius: 12px;
-            display: none;
-        }
-
+        /* Header */
         header {
             text-align: center;
             margin-bottom: 80px;
@@ -444,6 +111,7 @@
             margin-bottom: 20px;
         }
 
+        /* SVG Logo */
         .logo-svg {
             width: 80px;
             height: 80px;
@@ -473,6 +141,7 @@
             margin-right: 8px;
         }
 
+        /* App Grid */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -633,6 +302,7 @@
             font-size: 1.1rem;
         }
 
+        /* Stats Section */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -672,6 +342,7 @@
             font-weight: 600;
         }
 
+        /* Footer */
         footer {
             text-align: center;
             margin-top: 100px;
@@ -703,6 +374,7 @@
             color: var(--secondary);
         }
 
+        /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -725,6 +397,7 @@
             }
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 40px 20px;
@@ -741,15 +414,6 @@
             .stats {
                 grid-template-columns: 1fr;
             }
-
-            .admin-content {
-                padding: 20px;
-            }
-
-            .app-item {
-                flex-direction: column;
-                text-align: center;
-            }
         }
     </style>
 </head>
@@ -761,107 +425,7 @@
         <div class="orb orb-3"></div>
     </div>
 
-    <!-- Admin Button -->
-    <button class="admin-btn" onclick="openLoginModal()">
-        <i class="fas fa-user-shield"></i>
-    </button>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Login Admin</h2>
-                <button class="close-btn" onclick="closeLoginModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form onsubmit="login(event)">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Telefone</label>
-                    <input type="tel" id="loginPhone" required>
-                </div>
-                <div class="form-group">
-                    <label>Senha</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn-primary">Entrar</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Panel -->
-    <div id="adminPanel" class="admin-panel">
-        <div class="admin-header">
-            <h1><i class="fas fa-cog"></i> Painel Administrativo</h1>
-            <button class="btn-logout" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i> Sair
-            </button>
-        </div>
-        <div class="admin-content">
-            <div class="admin-section">
-                <h2 id="formTitle">Adicionar Novo Aplicativo</h2>
-                <form id="appForm" onsubmit="saveApp(event)">
-                    <input type="hidden" id="editingAppId">
-                    <div class="form-group">
-                        <label>Imagem do App</label>
-                        <div class="file-upload">
-                            <input type="file" id="appImage" accept="image/*" onchange="previewImage(event)">
-                            <div class="file-upload-label">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <span>Clique para carregar imagem</span>
-                            </div>
-                        </div>
-                        <img id="imagePreview" class="image-preview" alt="Preview">
-                    </div>
-                    <div class="form-group">
-                        <label>Nome do Aplicativo</label>
-                        <input type="text" id="appName" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Categoria</label>
-                        <select id="appCategory" required>
-                            <option value="Serviços">Serviços</option>
-                            <option value="Educação">Educação</option>
-                            <option value="Gestão">Gestão</option>
-                            <option value="Entretenimento">Entretenimento</option>
-                            <option value="Utilidades">Utilidades</option>
-                            <option value="Jogos">Jogos</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Descrição</label>
-                        <textarea id="appDescription" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Downloads Iniciais</label>
-                        <input type="number" id="appDownloads" value="0" min="0" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Link de Download</label>
-                        <input type="url" id="appLink" required>
-                    </div>
-                    <button type="submit" class="btn-primary" id="submitBtn">
-                        <i class="fas fa-plus"></i> Adicionar Aplicativo
-                    </button>
-                    <button type="button" class="btn-primary" id="cancelEditBtn" onclick="cancelEdit()" style="display: none; margin-top: 10px; background: rgba(255,255,255,0.1);">
-                        <i class="fas fa-times"></i> Cancelar Edição
-                    </button>
-                </form>
-            </div>
-
-            <div class="admin-section">
-                <h2>Aplicativos Cadastrados</h2>
-                <div id="appsList" class="apps-list"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div id="mainContent" class="container">
+    <div class="container">
         <header>
             <div class="logo-container">
                 <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -882,11 +446,77 @@
             <p class="subtitle"><i class="fas fa-shield-alt"></i>Aplicações Premium Verificadas</p>
         </header>
 
-        <div id="appsGrid" class="app-grid"></div>
+        <div class="app-grid">
+            <div class="app-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <img src="logo-servico.png" alt="Logo Papoite dos Serviços">
+                    </div>
+                    <div class="card-info">
+                        <span class="category"><i class="fas fa-briefcase"></i> Serviços</span>
+                        <h3>Papoite dos Serviços</h3>
+                    </div>
+                </div>
+                <p class="description">A tua solução está aqui; Onde quem precisa encontra, e quem sabe fazer aparece.</p>
+                <div class="download-stats">
+                    <i class="fas fa-download"></i>
+                    <span class="download-count" id="downloads-1">757</span> downloads
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.mediafire.com/file/c8ivp9qlkuzk9xr/Papoite_dos_servicos.apk/file" class="btn-install" target="_blank" onclick="incrementDownload(1)">
+                        <i class="fas fa-download"></i> Instalar Agora
+                    </a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <img src="logo-jogo.png" alt="Logo Acerta Mwangolé">
+                    </div>
+                    <div class="card-info">
+                        <span class="category"><i class="fas fa-graduation-cap"></i> Educação</span>
+                        <h3>Acerta Mwangolé</h3>
+                    </div>
+                </div>
+                <p class="description">Mostre que você conhece tudo! Um desafio divertido de perguntas e respostas sobre a nossa cultura.</p>
+                <div class="download-stats">
+                    <i class="fas fa-download"></i>
+                    <span class="download-count" id="downloads-2">1420</span> downloads
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.mediafire.com/file/gszztuj84m6knda/Acerta_Mwangole.apk/file" class="btn-install" target="_blank" onclick="incrementDownload(2)">
+                        <i class="fas fa-download"></i> Instalar Agora
+                    </a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <img src="logo-caixa.png" alt="Logo Caixa RB">
+                    </div>
+                    <div class="card-info">
+                        <span class="category"><i class="fas fa-chart-line"></i> Gestão</span>
+                        <h3>Caixa-RB</h3>
+                    </div>
+                </div>
+                <p class="description">Relatórios diários simples e inteligentes para gerenciar suas finanças com rapidez.</p>
+                <div class="download-stats">
+                    <i class="fas fa-download"></i>
+                    <span class="download-count" id="downloads-3">938</span> downloads
+                </div>
+                <div class="card-footer">
+                    <a href="https://rodrigsbeuagmailcom.itch.io/caixa-rb-relatrios-dirios-simples-e-inteligentes" class="btn-install" target="_blank" onclick="incrementDownload(3)">
+                        <i class="fas fa-download"></i> Instalar Agora
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-number" id="totalApps">0</div>
+                <div class="stat-number">3</div>
                 <div class="stat-label">Apps Disponíveis</div>
             </div>
             <div class="stat-card">
@@ -910,416 +540,34 @@
     </div>
 
     <script>
-        const ADMIN_CREDENTIALS = {
-            email: 'rodrigsbeua@gmail.com',
-            phone: '+244934821771',
-            password: 'Marakelcy14'
-        };
-
-        let isLoggedIn = false;
-        let apps = [];
-
-        // Initialize
-        async function init() {
-            await loadApps();
-            await loadDefaultApps();
-            renderApps();
-        }
-
-        // Load apps from storage
-        async function loadApps() {
-            try {
-                const result = await window.storage.get('beua14-apps', true);
-                if (result && result.value) {
-                    apps = JSON.parse(result.value);
-                }
-            } catch (error) {
-                console.log('Carregando apps padrão...');
-                apps = [];
-            }
-        }
-
-        // Load default apps if empty
-        async function loadDefaultApps() {
-            if (apps.length === 0) {
-                apps = [
-                    {
-                        id: Date.now() + 1,
-                        name: 'Papoite dos Serviços',
-                        category: 'Serviços',
-                        description: 'A tua solução está aqui; Onde quem precisa encontra, e quem sabe fazer aparece.',
-                        downloads: 757,
-                        link: 'https://www.mediafire.com/file/c8ivp9qlkuzk9xr/Papoite_dos_servicos.apk/file',
-                        image: 'logo-servico.png'
-                    },
-                    {
-                        id: Date.now() + 2,
-                        name: 'Acerta Mwangolé',
-                        category: 'Educação',
-                        description: 'Mostre que você conhece tudo! Um desafio divertido de perguntas e respostas sobre a nossa cultura.',
-                        downloads: 1420,
-                        link: 'https://www.mediafire.com/file/gszztuj84m6knda/Acerta_Mwangole.apk/file',
-                        image: 'logo-jogo.png'
-                    },
-                    {
-                        id: Date.now() + 3,
-                        name: 'Caixa-RB',
-                        category: 'Gestão',
-                        description: 'Relatórios diários simples e inteligentes para gerenciar suas finanças com rapidez.',
-                        downloads: 938,
-                        link: 'https://rodrigsbeuagmailcom.itch.io/caixa-rb-relatrios-dirios-simples-e-inteligentes',
-                        image: 'logo-caixa.png'
-                    }
-                ];
-                await saveApps();
-            }
-        }
-
-        // Save apps to storage
-        async function saveApps() {
-            try {
-                await window.storage.set('beua14-apps', JSON.stringify(apps), true);
-            } catch (error) {
-                console.error('Erro ao salvar:', error);
-                alert('Erro ao salvar aplicativo. Tente novamente.');
-            }
-        }
-
-        // Render apps on main page
-        function renderApps() {
-            const grid = document.getElementById('appsGrid');
-            grid.innerHTML = '';
+        // Sistema de contagem de downloads com armazenamento local
+        function incrementDownload(appId) {
+            const countElement = document.getElementById(`downloads-${appId}`);
+            let currentCount = parseInt(countElement.textContent);
+            currentCount++;
+            countElement.textContent = currentCount;
             
-            apps.forEach(app => {
-                const categoryIcons = {
-                    'Serviços': 'fa-briefcase',
-                    'Educação': 'fa-graduation-cap',
-                    'Gestão': 'fa-chart-line',
-                    'Entretenimento': 'fa-star',
-                    'Utilidades': 'fa-tools',
-                    'Jogos': 'fa-gamepad'
-                };
-
-                const card = document.createElement('div');
-                card.className = 'app-card';
-                card.innerHTML = `
-                    <div class="card-header">
-                        <div class="icon-box">
-                            <img src="${app.image}" alt="${app.name}">
-                        </div>
-                        <div class="card-info">
-                            <span class="category">
-                                <i class="fas ${categoryIcons[app.category] || 'fa-app'}"></i> 
-                                ${app.category}
-                            </span>
-                            <h3>${app.name}</h3>
-                        </div>
-                    </div>
-                    <p class="description">${app.description}</p>
-                    <div class="download-stats">
-                        <i class="fas fa-download"></i>
-                        <span class="download-count" id="downloads-${app.id}">${app.downloads}</span> downloads
-                    </div>
-                    <div class="card-footer">
-                        <a href="${app.link}" class="btn-install" target="_blank" onclick="incrementDownload(${app.id})">
-                            <i class="fas fa-download"></i> Instalar Agora
-                        </a>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-
-            document.getElementById('totalApps').textContent = apps.length;
-        }
-
-        // Render apps in admin panel
-        function renderAdminApps() {
-            const list = document.getElementById('appsList');
-            list.innerHTML = '';
-            
-            if (apps.length === 0) {
-                list.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">Nenhum aplicativo cadastrado ainda.</p>';
-                return;
-            }
-
-            apps.forEach(app => {
-                const item = document.createElement('div');
-                item.className = 'app-item';
-                item.innerHTML = `
-                    <div class="app-item-icon">
-                        <img src="${app.image}" alt="${app.name}">
-                    </div>
-                    <div class="app-item-info">
-                        <h3>${app.name}</h3>
-                        <p>${app.category} • ${app.downloads} downloads</p>
-                    </div>
-                    <div class="app-item-actions">
-                        <button class="btn-edit" onclick="editApp(${app.id})">
-                            <i class="fas fa-edit"></i> Editar
-                        </button>
-                        <button class="btn-delete" onclick="deleteApp(${app.id})">
-                            <i class="fas fa-trash"></i> Excluir
-                        </button>
-                    </div>
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        // Increment download count
-        async function incrementDownload(appId) {
-            const app = apps.find(a => a.id === appId);
-            if (app) {
-                app.downloads++;
-                await saveApps();
-                
-                const countElement = document.getElementById(`downloads-${appId}`);
-                if (countElement) {
-                    countElement.textContent = app.downloads;
-                    countElement.style.transform = 'scale(1.3)';
-                    countElement.style.color = '#00d4aa';
-                    setTimeout(() => {
-                        countElement.style.transform = 'scale(1)';
-                        countElement.style.color = '#ffffff';
-                    }, 300);
-                }
-            }
-        }
-
-        // Login
-        function login(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('loginEmail').value;
-            const phone = document.getElementById('loginPhone').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (email === ADMIN_CREDENTIALS.email && 
-                phone === ADMIN_CREDENTIALS.phone && 
-                password === ADMIN_CREDENTIALS.password) {
-                isLoggedIn = true;
-                closeLoginModal();
-                openAdminPanel();
-            } else {
-                alert('Credenciais inválidas!');
-            }
-        }
-
-        // Logout
-        function logout() {
-            isLoggedIn = false;
-            closeAdminPanel();
-            renderApps(); // Atualiza a página principal ao sair
-        }
-
-        // Modal functions
-        function openLoginModal() {
-            document.getElementById('loginModal').classList.add('active');
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.remove('active');
-            document.getElementById('loginEmail').value = '';
-            document.getElementById('loginPhone').value = '';
-            document.getElementById('loginPassword').value = '';
-        }
-
-        function openAdminPanel() {
-            document.getElementById('adminPanel').classList.add('active');
-            renderAdminApps();
-        }
-
-        function closeAdminPanel() {
-            document.getElementById('adminPanel').classList.remove('active');
-            renderApps();
-        }
-
-        // Preview image
-        function previewImage(event) {
-            const file = event.target.files[0];
-            const preview = document.getElementById('imagePreview');
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Add app
-        async function addApp(event) {
-            event.preventDefault();
-            
-            const imageFile = document.getElementById('appImage').files[0];
-            const name = document.getElementById('appName').value;
-            const category = document.getElementById('appCategory').value;
-            const description = document.getElementById('appDescription').value;
-            const downloads = parseInt(document.getElementById('appDownloads').value);
-            const link = document.getElementById('appLink').value;
-            
-            // Convert image to base64
-            const reader = new FileReader();
-            reader.onload = async function(e) {
-                const newApp = {
-                    id: Date.now(),
-                    name,
-                    category,
-                    description,
-                    downloads,
-                    link,
-                    image: e.target.result
-                };
-                
-                apps.push(newApp);
-                await saveApps();
-                
-                // Reset form
-                document.getElementById('appImage').value = '';
-                document.getElementById('appName').value = '';
-                document.getElementById('appDescription').value = '';
-                document.getElementById('appDownloads').value = '0';
-                document.getElementById('appLink').value = '';
-                document.getElementById('imagePreview').style.display = 'none';
-                
-                renderAdminApps();
-                alert('Aplicativo adicionado com sucesso!');
+            // Salva no armazenamento local do navegador
+            const downloads = {
+                1: parseInt(document.getElementById('downloads-1').textContent),
+                2: parseInt(document.getElementById('downloads-2').textContent),
+                3: parseInt(document.getElementById('downloads-3').textContent)
             };
-            reader.readAsDataURL(imageFile);
+            
+            // Anima o número
+            countElement.style.transform = 'scale(1.3)';
+            countElement.style.color = '#00d4aa';
+            setTimeout(() => {
+                countElement.style.transform = 'scale(1)';
+                countElement.style.color = '#ffffff';
+            }, 300);
         }
 
-        // Edit app
-        function editApp(appId) {
-            const app = apps.find(a => a.id === appId);
-            if (!app) return;
-            
-            // Scroll to form
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Fill form with app data
-            document.getElementById('editingAppId').value = app.id;
-            document.getElementById('appName').value = app.name;
-            document.getElementById('appCategory').value = app.category;
-            document.getElementById('appDescription').value = app.description;
-            document.getElementById('appDownloads').value = app.downloads;
-            document.getElementById('appLink').value = app.link;
-            
-            // Show current image
-            const preview = document.getElementById('imagePreview');
-            preview.src = app.image;
-            preview.style.display = 'block';
-            
-            // Update form UI
-            document.getElementById('formTitle').textContent = 'Editar Aplicativo';
-            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-save"></i> Salvar Alterações';
-            document.getElementById('cancelEditBtn').style.display = 'block';
-            
-            // Make image upload optional when editing
-            document.getElementById('appImage').removeAttribute('required');
-        }
-
-        // Cancel edit
-        function cancelEdit() {
-            document.getElementById('appForm').reset();
-            document.getElementById('editingAppId').value = '';
-            document.getElementById('imagePreview').style.display = 'none';
-            document.getElementById('formTitle').textContent = 'Adicionar Novo Aplicativo';
-            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-plus"></i> Adicionar Aplicativo';
-            document.getElementById('cancelEditBtn').style.display = 'none';
-            document.getElementById('appImage').setAttribute('required', 'required');
-        }
-
-        // Save app (add or update)
-        async function saveApp(event) {
-            event.preventDefault();
-            
-            const editingId = document.getElementById('editingAppId').value;
-            const name = document.getElementById('appName').value;
-            const category = document.getElementById('appCategory').value;
-            const description = document.getElementById('appDescription').value;
-            const downloads = parseInt(document.getElementById('appDownloads').value);
-            const link = document.getElementById('appLink').value;
-            const imageFile = document.getElementById('appImage').files[0];
-            
-            if (editingId) {
-                // Update existing app
-                const app = apps.find(a => a.id == editingId);
-                if (app) {
-                    app.name = name;
-                    app.category = category;
-                    app.description = description;
-                    app.downloads = downloads;
-                    app.link = link;
-                    
-                    // Only update image if new one is selected
-                    if (imageFile) {
-                        const reader = new FileReader();
-                        reader.onload = async function(e) {
-                            app.image = e.target.result;
-                            await saveApps();
-                            await loadApps(); // Recarrega os dados
-                            cancelEdit();
-                            renderAdminApps();
-                            renderApps(); // Atualiza a página principal
-                            alert('Aplicativo atualizado com sucesso!');
-                        };
-                        reader.readAsDataURL(imageFile);
-                    } else {
-                        await saveApps();
-                        await loadApps(); // Recarrega os dados
-                        cancelEdit();
-                        renderAdminApps();
-                        renderApps(); // Atualiza a página principal
-                        alert('Aplicativo atualizado com sucesso!');
-                    }
-                }
-            } else {
-                // Add new app
-                if (!imageFile) {
-                    alert('Por favor, selecione uma imagem para o aplicativo.');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = async function(e) {
-                    const newApp = {
-                        id: Date.now(),
-                        name,
-                        category,
-                        description,
-                        downloads,
-                        link,
-                        image: e.target.result
-                    };
-                    
-                    apps.push(newApp);
-                    await saveApps();
-                    await loadApps(); // Recarrega os dados
-                    cancelEdit();
-                    renderAdminApps();
-                    renderApps(); // Atualiza a página principal
-                    alert('Aplicativo adicionado com sucesso!');
-                };
-                reader.readAsDataURL(imageFile);
-            }
-        }
-
-        // Delete app
-        async function deleteApp(appId) {
-            if (confirm('Tem certeza que deseja excluir este aplicativo?')) {
-                apps = apps.filter(app => app.id !== appId);
-                await saveApps();
-                await loadApps(); // Recarrega os dados
-                renderAdminApps();
-                renderApps(); // Atualiza a página principal
-                alert('Aplicativo excluído com sucesso!');
-            }
-        }
-
-        // Initialize on load
-        window.addEventListener('load', init);
+        // Carrega os valores ao iniciar a página
+        window.addEventListener('load', () => {
+            // Os valores iniciais já estão definidos no HTML
+            console.log('Beua14 Store carregada com sucesso!');
+        });
     </script>
 
 </body>
