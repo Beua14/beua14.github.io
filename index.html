@@ -950,7 +950,7 @@
                         description: 'A tua solução está aqui; Onde quem precisa encontra, e quem sabe fazer aparece.',
                         downloads: 757,
                         link: 'https://www.mediafire.com/file/c8ivp9qlkuzk9xr/Papoite_dos_servicos.apk/file',
-                        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzAwNjZmZiIvPjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1zaXplPSIzMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkrw8L3RleHQ+PC9zdmc+'
+                        image: 'logo-servico.png'
                     },
                     {
                         id: Date.now() + 2,
@@ -959,7 +959,7 @@
                         description: 'Mostre que você conhece tudo! Um desafio divertido de perguntas e respostas sobre a nossa cultura.',
                         downloads: 1420,
                         link: 'https://www.mediafire.com/file/gszztuj84m6knda/Acerta_Mwangole.apk/file',
-                        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzAwZDRhYSIvPjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1zaXplPSIzMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkow8L3RleHQ+PC9zdmc+'
+                        image: 'logo-jogo.png'
                     },
                     {
                         id: Date.now() + 3,
@@ -968,7 +968,7 @@
                         description: 'Relatórios diários simples e inteligentes para gerenciar suas finanças com rapidez.',
                         downloads: 938,
                         link: 'https://rodrigsbeuagmailcom.itch.io/caixa-rb-relatrios-dirios-simples-e-inteligentes',
-                        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmNmI5ZCIvPjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1zaXplPSIzMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkrw8L3RleHQ+PC9zdmc+'
+                        image: 'logo-caixa.png'
                     }
                 ];
                 await saveApps();
@@ -1109,6 +1109,7 @@
         function logout() {
             isLoggedIn = false;
             closeAdminPanel();
+            renderApps(); // Atualiza a página principal ao sair
         }
 
         // Modal functions
@@ -1258,15 +1259,19 @@
                         reader.onload = async function(e) {
                             app.image = e.target.result;
                             await saveApps();
+                            await loadApps(); // Recarrega os dados
                             cancelEdit();
                             renderAdminApps();
+                            renderApps(); // Atualiza a página principal
                             alert('Aplicativo atualizado com sucesso!');
                         };
                         reader.readAsDataURL(imageFile);
                     } else {
                         await saveApps();
+                        await loadApps(); // Recarrega os dados
                         cancelEdit();
                         renderAdminApps();
+                        renderApps(); // Atualiza a página principal
                         alert('Aplicativo atualizado com sucesso!');
                     }
                 }
@@ -1291,8 +1296,10 @@
                     
                     apps.push(newApp);
                     await saveApps();
+                    await loadApps(); // Recarrega os dados
                     cancelEdit();
                     renderAdminApps();
+                    renderApps(); // Atualiza a página principal
                     alert('Aplicativo adicionado com sucesso!');
                 };
                 reader.readAsDataURL(imageFile);
@@ -1304,7 +1311,9 @@
             if (confirm('Tem certeza que deseja excluir este aplicativo?')) {
                 apps = apps.filter(app => app.id !== appId);
                 await saveApps();
+                await loadApps(); // Recarrega os dados
                 renderAdminApps();
+                renderApps(); // Atualiza a página principal
                 alert('Aplicativo excluído com sucesso!');
             }
         }
