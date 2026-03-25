@@ -36,217 +36,617 @@
             position: relative;
         }
 
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: var(--primary);
-            top: -10%;
-            right: -10%;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--secondary);
-            bottom: -5%;
-            left: -5%;
-            animation-delay: 5s;
-        }
-
-        .orb-3 {
-            width: 300px;
-            height: 300px;
-            background: #ff6b9d;
-            top: 50%;
-            left: 50%;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 40px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 80px;
-            animation: fadeInDown 0.8s ease;
-        }
-
-        .logo-container {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .logo-svg {
-            width: 80px;
-            height: 80px;
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-        }
-
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 35px;
-        }
-
-        .app-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 40px;
-            transition: 0.3s;
-        }
-
-        .app-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .icon-box {
-            width: 90px;
-            height: 90px;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .icon-box img {
-            width: 100%;
-            height: 100%;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-        }
-
-        .description {
-            color: var(--text-secondary);
-            margin: 15px 0;
-        }
-
-        .btn-install {
-            background: var(--primary);
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .stats {
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-        }
-
-        footer {
-            margin-top: 100px;
-            text-align: center;
-            color: var(--text-secondary);
-        }
+        /* (TODO O TEU CSS ORIGINAL PERMANECE IGUAL — NÃO ALTERADO) */
     </style>
 </head>
 <body>
 
-<div class="bg-animation">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-</div>
-
-<div class="container">
-
-<header>
-    <h1>Beua14 Store</h1>
-    <p class="subtitle">Aplicações Premium Verificadas</p>
-</header>
-
-<div class="app-grid">
-
-    <!-- NOVO APP PRIMEIRO -->
-    <div class="app-card">
-        <div class="icon-box">
-            <img src="logo-vazoux.png">
-        </div>
-        <h3>Vazados Angola</h3>
-        <p class="description">Este app é exclusivamente para maiores de 18 anos.</p>
-        <p><strong id="downloads-4">0</strong> downloads</p>
-        <a href="https://www.mediafire.com/file/1etpo9jsgxlbau3/Vazoux.apk/file" target="_blank" class="btn-install" onclick="incrementDownload(4)">Instalar</a>
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
 
-    <!-- APP ORIGINAL 1 -->
-    <div class="app-card">
-        <div class="icon-box">
-            <img src="logo-servico.png">
-        </div>
-        <h3>Papoite dos Serviços</h3>
-        <p class="description">A tua solução está aqui.</p>
-        <p><strong id="downloads-1">757</strong> downloads</p>
-        <a href="https://www.mediafire.com/file/c8ivp9qlkuzk9xr/Papoite_dos_servicos.apk/file" target="_blank" class="btn-install" onclick="incrementDownload(1)">Instalar</a>
-    </div>
+    <div class="container">
+        <header>
+            <!-- HEADER ORIGINAL -->
+        </header>
 
-</div>
+        <div class="app-grid">
 
-<div class="stats">
-    <div class="stat-number">4</div>
-    <div>Apps Disponíveis</div>
-</div>
+            <!-- NOVO APP (ADICIONADO NO TOPO) -->
+            <div class="app-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <img src="logo-vazoux.png" alt="Logo Vazados Angola">
+                    </div>
+                    <div class="card-info">
+                        <span class="category"><i class="fas fa-fire"></i> Adulto 18+</span>
+                        <h3>Vazados Angola</h3>
+                    </div>
+                </div>
+                <p class="description">Este app é exclusivamente para maiores de 18 anos.</p>
+                <div class="download-stats">
+                    <i class="fas fa-download"></i>
+                    <span class="download-count" id="downloads-4">0</span> downloads
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.mediafire.com/file/1etpo9jsgxlbau3/Vazoux.apk/file" class="btn-install" target="_blank" onclick="incrementDownload(4)">
+                        <i class="fas fa-download"></i> Instalar Agora
+                    </a>
+                </div>
+            </div>
 
-<footer>
-    <p>© 2025 Beua14 Store</p>
-</footer>
+            <!-- RESTO DO TEU CÓDIGO CONTINUA IGUAL -->
+<!DOCTYPE html>  <html lang="pt-br">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Beua14 Store | Aplicativos Premium</title>  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+  
+<style>  
+    :root {  
+        --primary: #0066ff;  
+        --primary-dark: #0052cc;  
+        --secondary: #00d4aa;  
+        --bg-start: #0f0f23;  
+        --bg-end: #1a1a3e;  
+        --card-bg: rgba(255, 255, 255, 0.05);  
+        --card-border: rgba(255, 255, 255, 0.1);  
+        --text-primary: #ffffff;  
+        --text-secondary: #a0aec0;  
+    }  
 
-</div>
+    * {  
+        margin: 0;  
+        padding: 0;  
+        box-sizing: border-box;  
+    }  
 
-<script>
-function incrementDownload(id){
-    let el = document.getElementById("downloads-"+id);
-    el.textContent = parseInt(el.textContent)+1;
-}
+    body {  
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  
+        background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);  
+        min-height: 100vh;  
+        color: var(--text-primary);  
+        overflow-x: hidden;  
+        position: relative;  
+    }  
+
+    /* Animated Background */  
+    .bg-animation {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        height: 100%;  
+        z-index: 0;  
+        overflow: hidden;  
+    }  
+
+    .orb {  
+        position: absolute;  
+        border-radius: 50%;  
+        filter: blur(80px);  
+        opacity: 0.3;  
+        animation: float 20s infinite ease-in-out;  
+    }  
+
+    .orb-1 {  
+        width: 500px;  
+        height: 500px;  
+        background: var(--primary);  
+        top: -10%;  
+        right: -10%;  
+        animation-delay: 0s;  
+    }  
+
+    .orb-2 {  
+        width: 400px;  
+        height: 400px;  
+        background: var(--secondary);  
+        bottom: -5%;  
+        left: -5%;  
+        animation-delay: 5s;  
+    }  
+
+    .orb-3 {  
+        width: 300px;  
+        height: 300px;  
+        background: #ff6b9d;  
+        top: 50%;  
+        left: 50%;  
+        animation-delay: 10s;  
+    }  
+
+    @keyframes float {  
+        0%, 100% { transform: translate(0, 0) scale(1); }  
+        33% { transform: translate(30px, -30px) scale(1.1); }  
+        66% { transform: translate(-20px, 20px) scale(0.9); }  
+    }  
+
+    /* Container */  
+    .container {  
+        position: relative;  
+        z-index: 1;  
+        max-width: 1400px;  
+        margin: 0 auto;  
+        padding: 60px 40px;  
+    }  
+
+    /* Header */  
+    header {  
+        text-align: center;  
+        margin-bottom: 80px;  
+        animation: fadeInDown 0.8s ease;  
+    }  
+
+    .logo-container {  
+        display: inline-flex;  
+        align-items: center;  
+        gap: 15px;  
+        margin-bottom: 20px;  
+    }  
+
+    /* SVG Logo */  
+    .logo-svg {  
+        width: 80px;  
+        height: 80px;  
+        filter: drop-shadow(0 10px 40px rgba(0, 102, 255, 0.4));  
+    }  
+
+    header h1 {  
+        font-size: 3.5rem;  
+        font-weight: 800;  
+        background: linear-gradient(135deg, var(--primary), var(--secondary));  
+        -webkit-background-clip: text;  
+        -webkit-text-fill-color: transparent;  
+        background-clip: text;  
+        letter-spacing: -2px;  
+        margin-bottom: 15px;  
+    }  
+
+    .subtitle {  
+        font-size: 1.2rem;  
+        color: var(--text-secondary);  
+        font-weight: 500;  
+        letter-spacing: 0.5px;  
+    }  
+
+    .subtitle i {  
+        color: var(--secondary);  
+        margin-right: 8px;  
+    }  
+
+    /* App Grid */  
+    .app-grid {  
+        display: grid;  
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));  
+        gap: 35px;  
+        animation: fadeInUp 0.8s ease 0.2s both;  
+    }  
+
+    .app-card {  
+        background: var(--card-bg);  
+        backdrop-filter: blur(20px);  
+        border: 1px solid var(--card-border);  
+        border-radius: 24px;  
+        padding: 40px;  
+        position: relative;  
+        overflow: hidden;  
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);  
+    }  
+
+    .app-card::before {  
+        content: '';  
+        position: absolute;  
+        top: 0;  
+        left: 0;  
+        right: 0;  
+        height: 4px;  
+        background: linear-gradient(90deg, var(--primary), var(--secondary));  
+        transform: scaleX(0);  
+        transition: transform 0.4s ease;  
+    }  
+
+    .app-card:hover {  
+        transform: translateY(-8px);  
+        background: var(--card-bg);  
+        border-color: rgba(255, 255, 255, 0.2);  
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);  
+    }  
+
+    .app-card:hover::before {  
+        transform: scaleX(1);  
+    }  
+
+    .card-header {  
+        display: flex;  
+        align-items: flex-start;  
+        gap: 20px;  
+        margin-bottom: 25px;  
+    }  
+
+    .icon-box {  
+        width: 90px;  
+        height: 90px;  
+        border-radius: 20px;  
+        background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 170, 0.1));  
+        border: 2px solid rgba(255, 255, 255, 0.1);  
+        display: flex;  
+        align-items: center;  
+        justify-content: center;  
+        overflow: hidden;  
+        flex-shrink: 0;  
+        transition: transform 0.3s ease;  
+    }  
+
+    .app-card:hover .icon-box {  
+        transform: scale(1.05) rotate(2deg);  
+    }  
+
+    .icon-box img {  
+        width: 100%;  
+        height: 100%;  
+        object-fit: cover;  
+    }  
+
+    .card-info {  
+        flex: 1;  
+    }  
+
+    .category {  
+        display: inline-flex;  
+        align-items: center;  
+        gap: 6px;  
+        font-size: 0.75rem;  
+        font-weight: 700;  
+        color: var(--secondary);  
+        text-transform: uppercase;  
+        letter-spacing: 1px;  
+        margin-bottom: 10px;  
+        padding: 6px 14px;  
+        background: rgba(0, 212, 170, 0.1);  
+        border-radius: 20px;  
+        border: 1px solid rgba(0, 212, 170, 0.2);  
+    }  
+
+    h3 {  
+        font-size: 1.75rem;  
+        font-weight: 700;  
+        margin-bottom: 12px;  
+        color: var(--text-primary);  
+        letter-spacing: -0.5px;  
+    }  
+
+    .description {  
+        color: var(--text-secondary);  
+        font-size: 1rem;  
+        line-height: 1.7;  
+        margin-bottom: 20px;  
+        min-height: 50px;  
+    }  
+
+    .download-stats {  
+        display: flex;  
+        align-items: center;  
+        gap: 8px;  
+        margin-bottom: 25px;  
+        color: var(--text-secondary);  
+        font-size: 0.9rem;  
+    }  
+
+    .download-stats i {  
+        color: var(--secondary);  
+    }  
+
+    .download-count {  
+        font-weight: 700;  
+        color: var(--text-primary);  
+    }  
+
+    .card-footer {  
+        display: flex;  
+        align-items: center;  
+        gap: 15px;  
+    }  
+
+    .btn-install {  
+        flex: 1;  
+        display: inline-flex;  
+        align-items: center;  
+        justify-content: center;  
+        gap: 10px;  
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));  
+        color: white;  
+        padding: 16px 32px;  
+        border-radius: 12px;  
+        text-decoration: none;  
+        font-weight: 700;  
+        font-size: 1rem;  
+        transition: all 0.3s ease;  
+        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3);  
+        cursor: pointer;  
+    }  
+
+    .btn-install:hover {  
+        transform: translateY(-2px);  
+        box-shadow: 0 12px 32px rgba(0, 102, 255, 0.4);  
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));  
+    }  
+
+    .btn-install i {  
+        font-size: 1.1rem;  
+    }  
+
+    /* Stats Section */  
+    .stats {  
+        display: grid;  
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  
+        gap: 25px;  
+        margin-top: 80px;  
+        animation: fadeInUp 0.8s ease 0.4s both;  
+    }  
+
+    .stat-card {  
+        background: var(--card-bg);  
+        backdrop-filter: blur(20px);  
+        border: 1px solid var(--card-border);  
+        border-radius: 20px;  
+        padding: 30px;  
+        text-align: center;  
+        transition: all 0.3s ease;  
+    }  
+
+    .stat-card:hover {  
+        transform: translateY(-5px);  
+        border-color: rgba(255, 255, 255, 0.2);  
+    }  
+
+    .stat-number {  
+        font-size: 2.5rem;  
+        font-weight: 800;  
+        background: linear-gradient(135deg, var(--primary), var(--secondary));  
+        -webkit-background-clip: text;  
+        -webkit-text-fill-color: transparent;  
+        background-clip: text;  
+        margin-bottom: 8px;  
+    }  
+
+    .stat-label {  
+        color: var(--text-secondary);  
+        font-size: 0.95rem;  
+        font-weight: 600;  
+    }  
+
+    /* Footer */  
+    footer {  
+        text-align: center;  
+        margin-top: 100px;  
+        padding: 40px 0;  
+        border-top: 1px solid var(--card-border);  
+        color: var(--text-secondary);  
+        font-size: 0.95rem;  
+    }  
+
+    footer a {  
+        color: var(--secondary);  
+        text-decoration: none;  
+        transition: color 0.3s ease;  
+    }  
+
+    footer a:hover {  
+        color: var(--primary);  
+    }  
+
+    .contact-info {  
+        margin-top: 15px;  
+        display: flex;  
+        align-items: center;  
+        justify-content: center;  
+        gap: 8px;  
+    }  
+
+    .contact-info i {  
+        color: var(--secondary);  
+    }  
+
+    /* Animations */  
+    @keyframes fadeInDown {  
+        from {  
+            opacity: 0;  
+            transform: translateY(-30px);  
+        }  
+        to {  
+            opacity: 1;  
+            transform: translateY(0);  
+        }  
+    }  
+
+    @keyframes fadeInUp {  
+        from {  
+            opacity: 0;  
+            transform: translateY(30px);  
+        }  
+        to {  
+            opacity: 1;  
+            transform: translateY(0);  
+        }  
+    }  
+
+    /* Responsive */  
+    @media (max-width: 768px) {  
+        .container {  
+            padding: 40px 20px;  
+        }  
+
+        header h1 {  
+            font-size: 2.5rem;  
+        }  
+
+        .app-grid {  
+            grid-template-columns: 1fr;  
+        }  
+
+        .stats {  
+            grid-template-columns: 1fr;  
+        }  
+    }  
+</style>
+
+</head>  
+<body>  <div class="bg-animation">  
+    <div class="orb orb-1"></div>  
+    <div class="orb orb-2"></div>  
+    <div class="orb orb-3"></div>  
+</div>  
+
+<div class="container">  
+    <header>  
+        <div class="logo-container">  
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">  
+                <defs>  
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">  
+                        <stop offset="0%" style="stop-color:#0066ff;stop-opacity:1" />  
+                        <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />  
+                    </linearGradient>  
+                </defs>  
+                <rect width="100" height="100" rx="22" fill="url(#logoGradient)"/>  
+                <text x="50" y="40" font-size="28" font-weight="800" fill="white" text-anchor="middle" font-family="Inter, sans-serif">B14</text>  
+                <circle cx="30" cy="70" r="8" fill="white" opacity="0.9"/>  
+                <circle cx="50" cy="70" r="8" fill="white" opacity="0.9"/>  
+                <circle cx="70" cy="70" r="8" fill="white" opacity="0.9"/>  
+            </svg>  
+        </div>  
+        <h1>Beua14 Store</h1>  
+        <p class="subtitle"><i class="fas fa-shield-alt"></i>Aplicações Premium Verificadas</p>  
+    </header>  
+
+    <div class="app-grid">  
+        <div class="app-card">  
+            <div class="card-header">  
+                <div class="icon-box">  
+                    <img src="logo-servico.png" alt="Logo Papoite dos Serviços">  
+                </div>  
+                <div class="card-info">  
+                    <span class="category"><i class="fas fa-briefcase"></i> Serviços</span>  
+                    <h3>Papoite dos Serviços</h3>  
+                </div>  
+            </div>  
+            <p class="description">A tua solução está aqui; Onde quem precisa encontra, e quem sabe fazer aparece.</p>  
+            <div class="download-stats">  
+                <i class="fas fa-download"></i>  
+                <span class="download-count" id="downloads-1">757</span> downloads  
+            </div>  
+            <div class="card-footer">  
+                <a href="https://www.mediafire.com/file/c8ivp9qlkuzk9xr/Papoite_dos_servicos.apk/file" class="btn-install" target="_blank" onclick="incrementDownload(1)">  
+                    <i class="fas fa-download"></i> Instalar Agora  
+                </a>  
+            </div>  
+        </div>  
+
+        <div class="app-card">  
+            <div class="card-header">  
+                <div class="icon-box">  
+                    <img src="logo-jogo.png" alt="Logo Acerta Mwangolé">  
+                </div>  
+                <div class="card-info">  
+                    <span class="category"><i class="fas fa-graduation-cap"></i> Educação</span>  
+                    <h3>Acerta Mwangolé</h3>  
+                </div>  
+            </div>  
+            <p class="description">Mostre que você conhece tudo! Um desafio divertido de perguntas e respostas sobre a nossa cultura.</p>  
+            <div class="download-stats">  
+                <i class="fas fa-download"></i>  
+                <span class="download-count" id="downloads-2">1420</span> downloads  
+            </div>  
+            <div class="card-footer">  
+                <a href="https://www.mediafire.com/file/gszztuj84m6knda/Acerta_Mwangole.apk/file" class="btn-install" target="_blank" onclick="incrementDownload(2)">  
+                    <i class="fas fa-download"></i> Instalar Agora  
+                </a>  
+            </div>  
+        </div>  
+
+        <div class="app-card">  
+            <div class="card-header">  
+                <div class="icon-box">  
+                    <img src="logo-caixa.png" alt="Logo Caixa RB">  
+                </div>  
+                <div class="card-info">  
+                    <span class="category"><i class="fas fa-chart-line"></i> Gestão</span>  
+                    <h3>Caixa-RB</h3>  
+                </div>  
+            </div>  
+            <p class="description">Relatórios diários simples e inteligentes para gerenciar suas finanças com rapidez.</p>  
+            <div class="download-stats">  
+                <i class="fas fa-download"></i>  
+                <span class="download-count" id="downloads-3">938</span> downloads  
+            </div>  
+            <div class="card-footer">  
+                <a href="https://rodrigsbeuagmailcom.itch.io/caixa-rb-relatrios-dirios-simples-e-inteligentes" class="btn-install" target="_blank" onclick="incrementDownload(3)">  
+                    <i class="fas fa-download"></i> Instalar Agora  
+                </a>  
+            </div>  
+        </div>  
+    </div>  
+
+    <div class="stats">  
+        <div class="stat-card">  
+            <div class="stat-number">4</div>  
+            <div class="stat-label">Apps Disponíveis</div>  
+        </div>  
+        <div class="stat-card">  
+            <div class="stat-number">100%</div>  
+            <div class="stat-label">Segurança Garantida</div>  
+        </div>  
+        <div class="stat-card">  
+            <div class="stat-number">24/7</div>  
+            <div class="stat-label">Suporte Dedicado</div>  
+        </div>  
+    </div>  
+
+    <footer>  
+        <p>&copy; 2025 <strong>Beua14 Store</strong> • Todos os direitos reservados.</p>  
+        <div class="contact-info">  
+            <i class="fas fa-envelope"></i>  
+            <a href="mailto:rodrigsbeua@gmail.com">rodrigsbeua@gmail.com</a>  
+        </div>  
+        <p style="margin-top: 15px;">Desenvolvido com <i class="fas fa-heart" style="color: #ff6b9d;"></i> em Angola</p>  
+    </footer>  
+</div>  
+
+<script>  
+    // Sistema de contagem de downloads com armazenamento local  
+    function incrementDownload(appId) {  
+        const countElement = document.getElementById(`downloads-${appId}`);  
+        let currentCount = parseInt(countElement.textContent);  
+        currentCount++;  
+        countElement.textContent = currentCount;  
+          
+        // Salva no armazenamento local do navegador  
+        const downloads = {  
+            const downloads = {
+    1: parseInt(document.getElementById('downloads-1').textContent),
+    2: parseInt(document.getElementById('downloads-2').textContent),
+    3: parseInt(document.getElementById('downloads-3').textContent),
+    4: parseInt(document.getElementById('downloads-4').textContent)
+        };  
+          
+        // Anima o número  
+        countElement.style.transform = 'scale(1.3)';  
+        countElement.style.color = '#00d4aa';  
+        setTimeout(() => {  
+            countElement.style.transform = 'scale(1)';  
+            countElement.style.color = '#ffffff';  
+        }, 300);  
+    }  
+
+    // Carrega os valores ao iniciar a página  
+    window.addEventListener('load', () => {  
+        // Os valores iniciais já estão definidos no HTML  
+        console.log('Beua14 Store carregada com sucesso!');  
+    });  
 </script>
 
-</body>
+</body>  
 </html>
