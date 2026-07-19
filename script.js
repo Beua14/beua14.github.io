@@ -65,6 +65,7 @@ function observarNovosElementos(seletor) {
 async function iniciar() {
   document.getElementById('ano-atual').textContent = new Date().getFullYear();
   iniciarScrollReveal();
+  iniciarSliderTelefone();
 
   await Promise.all([
     carregarConfiguracoes(),
@@ -421,6 +422,83 @@ async function carregarDownloadsHoje() {
   const inicioHoje = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()).toISOString();
   const { data } = await db.from('downloads_log').select('id').gte('criado_em', inicioHoje);
   document.getElementById('stat-hoje').textContent = (data || []).length;
+}
+
+// ============================================
+// SLIDER AUTOMÁTICO DO TELEFONE (telefone / app / notícias)
+// ============================================
+const PHONE_SLIDES = [
+  // Slide 1: Tela inicial
+  '<div class="phone-header"><i class="fas fa-robot"></i> BEUA14</div>' +
+  '<div class="phone-welcome">Bem-vindo de volta!<span>Encontre os melhores aplicativos para seu Android</span></div>' +
+  '<div class="phone-search"><i class="fas fa-search"></i> Buscar aplicativos...</div>' +
+  '<div class="phone-categorias-label">Categorias <span>Ver todas</span></div>' +
+  '<div class="phone-categorias-grid">' +
+  '<div class="pc-item"><i class="fas fa-gamepad"></i>Jogos</div>' +
+  '<div class="pc-item"><i class="fas fa-wrench"></i>Ferramentas</div>' +
+  '<div class="pc-item"><i class="fas fa-film"></i>Entretenimento</div>' +
+  '<div class="pc-item"><i class="fas fa-comments"></i>Comunicação</div>' +
+  '<div class="pc-item"><i class="fas fa-wand-magic-sparkles"></i>Personalização</div>' +
+  '<div class="pc-item"><i class="fas fa-chart-simple"></i>Produtividade</div>' +
+  '</div>',
+
+  // Slide 2: Detalhes de um app
+  '<div class="phone-header"><i class="fas fa-arrow-left"></i> Detalhes</div>' +
+  '<div style="display:flex; gap:10px; align-items:center; margin-top:6px;">' +
+  '<div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2));"></div>' +
+  '<div><strong style="font-size:12px;">SnapTube</strong><div style="font-size:9px; color:var(--text-secondary);">Entretenimento</div></div>' +
+  '</div>' +
+  '<div style="display:flex; gap:6px; margin-top:8px;">' +
+  '<span class="info-chip" style="font-size:9px; padding:4px 8px;">v7.25</span>' +
+  '<span class="info-chip" style="font-size:9px; padding:4px 8px;">23.5 MB</span>' +
+  '</div>' +
+  '<p style="font-size:9px; color:var(--text-secondary); margin-top:10px; line-height:1.5;">Baixe vídeos e músicas favoritas com apenas um toque, direto no seu Android.</p>' +
+  '<div class="phone-search" style="justify-content:center; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#05130a; font-weight:700; margin-top:14px;">Baixar agora</div>',
+
+  // Slide 3: Notícias
+  '<div class="phone-header"><i class="fas fa-newspaper"></i> Notícias</div>' +
+  '<div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">' +
+  '<div style="background:var(--card); border-radius:8px; padding:8px;"><div style="font-size:8px; color:var(--brand); font-weight:700;">TECNOLOGIA</div><div style="font-size:10px; margin-top:3px;">WhatsApp lança nova função</div></div>' +
+  '<div style="background:var(--card); border-radius:8px; padding:8px;"><div style="font-size:8px; color:var(--brand); font-weight:700;">SEGURANÇA</div><div style="font-size:10px; margin-top:3px;">Como manter seu Android seguro</div></div>' +
+  '<div style="background:var(--card); border-radius:8px; padding:8px;"><div style="font-size:8px; color:var(--brand); font-weight:700;">DICAS</div><div style="font-size:10px; margin-top:3px;">5 apps essenciais pra você</div></div>' +
+  '</div>',
+];
+
+let phoneSlideIndex = 0;
+
+function iniciarSliderTelefone() {
+  const tela = document.getElementById('phone-screen');
+  if (!tela) return;
+  tela.innerHTML = PHONE_SLIDES[0];
+
+  setInterval(() => {
+    tela.classList.add('fading');
+    setTimeout(() => {
+      phoneSlideIndex = (phoneSlideIndex + 1) % PHONE_SLIDES.length;
+      tela.innerHTML = PHONE_SLIDES[phoneSlideIndex];
+      tela.classList.remove('fading');
+    }, 400);
+  }, 4000);
+}
+
+// ============================================
+// MODAL DE DOAÇÃO
+// ============================================
+function abrirDoar() {
+  document.getElementById('modal-box').innerHTML =
+    '<button class="modal-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>' +
+    '<div style="width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2)); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">' +
+    '<i class="fas fa-heart" style="color:#05130a; font-size:22px;"></i></div>' +
+    '<h2>Apoie o BEUA14</h2>' +
+    '<p style="color:var(--text-secondary); font-size:14px; margin:10px 0 20px;">Se o BEUA14 te ajudou a encontrar bons apps, considere fazer uma doação. Isso ajuda a manter o projeto no ar.</p>' +
+    '<div style="background:var(--card-hover); border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px;">' +
+    '<div><div style="font-size:11px; color:var(--text-secondary);">Transferência Express</div><div style="font-size:15px; font-weight:700;">934 821 771</div></div>' +
+    '<div><div style="font-size:11px; color:var(--text-secondary);">IBAN (BFA)</div><div style="font-size:14px; font-weight:700; word-break:break-all;">AO06 0006 0000 7383 8891 3011 1</div></div>' +
+    '<div><div style="font-size:11px; color:var(--text-secondary);">Titular</div><div style="font-size:14px; font-weight:600;">Luis Rodrigues Beua Manuel</div></div>' +
+    '</div>' +
+    '<button class="btn btn-brand" style="width:100%; justify-content:center; margin-top:18px;" onclick="copiarLink(\'AO06 0006 0000 7383 8891 3011 1\')"><i class="fas fa-copy"></i> Copiar IBAN</button>' +
+    '<p style="color:var(--text-secondary); font-size:12px; margin-top:16px; text-align:center;">Dúvidas? <a href="mailto:rodrigsbeua@gmail.com" style="color:var(--brand);">rodrigsbeua@gmail.com</a> · <a href="tel:+244934821771" style="color:var(--brand);">+244 934 821 771</a></p>';
+  document.getElementById('modal-overlay').classList.add('open');
 }
 
 iniciar();
