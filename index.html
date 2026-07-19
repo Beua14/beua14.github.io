@@ -27,7 +27,7 @@
       <i class="fas fa-search"></i>
       <input id="search-input" type="text" placeholder="Buscar aplicativos...">
     </div>
-    <button class="btn-entrar">Entrar</button>
+    <button class="btn-entrar" id="btn-doar" onclick="abrirDoar()">Doar</button>
   </div>
 </nav>
 
@@ -51,20 +51,7 @@
       <div class="phone-glow"></div>
       <div class="phone-mockup">
         <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="phone-header"><i class="fas fa-robot"></i> BEUA14</div>
-          <div class="phone-welcome">Bem-vindo de volta!<span>Encontre os melhores aplicativos para seu Android</span></div>
-          <div class="phone-search"><i class="fas fa-search"></i> Buscar aplicativos...</div>
-          <div class="phone-categorias-label">Categorias <span>Ver todas</span></div>
-          <div class="phone-categorias-grid">
-            <div class="pc-item"><i class="fas fa-gamepad"></i>Jogos</div>
-            <div class="pc-item"><i class="fas fa-wrench"></i>Ferramentas</div>
-            <div class="pc-item"><i class="fas fa-film"></i>Entretenimento</div>
-            <div class="pc-item"><i class="fas fa-comments"></i>Comunicação</div>
-            <div class="pc-item"><i class="fas fa-wand-magic-sparkles"></i>Personalização</div>
-            <div class="pc-item"><i class="fas fa-chart-simple"></i>Produtividade</div>
-          </div>
-        </div>
+        <div class="phone-screen" id="phone-screen"></div>
         <div class="phone-bar"></div>
       </div>
       <div class="floating-card fc-1 reveal"><i class="fas fa-shield-check"></i><div><strong>Verificado</strong><span>Todos os apps verificados</span></div></div>
@@ -113,6 +100,14 @@
     </div>
     <a href="#" id="telegram-link" class="btn btn-brand" target="_blank"><i class="fab fa-telegram"></i> Entrar no Telegram</a>
   </div>
+  <div class="social-round-row reveal">
+    <a href="https://instagram.com/rodrigs_beua" target="_blank" class="social-round" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/rodrigsbeua" target="_blank" class="social-round" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="https://facebook.com/rodrigsbeua" target="_blank" class="social-round" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://wa.me/244934821771" target="_blank" class="social-round" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://x.com/rodrigsbeua" target="_blank" class="social-round" title="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.tiktok.com/@rodrigsbeua" target="_blank" class="social-round" title="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
 </section>
 
 <footer>
@@ -121,6 +116,10 @@
       <div class="logo"><i class="fas fa-robot"></i> BEUA<span>14</span></div>
       <p id="footer-descricao">O seu portal de aplicativos Android. Seguros, rápidos e sempre atualizados.</p>
       <div class="social-icons" id="social-icons"></div>
+      <div class="footer-contato-direto">
+        <a href="mailto:rodrigsbeua@gmail.com"><i class="fas fa-envelope"></i> rodrigsbeua@gmail.com</a>
+        <a href="tel:+244934821771"><i class="fas fa-phone"></i> +244 934 821 771</a>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Navegação</h4>
