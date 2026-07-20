@@ -556,4 +556,71 @@ function abrirDoar() {
   document.getElementById('modal-overlay').classList.add('open');
 }
 
+// ============================================
+// SISTEMA DE NOTIFICAÇÕES PUSH
+// ============================================
+const VAPID_PUBLIC_KEY = 'BKdmEM0HhtDftdLT0ktuw_m4jv2KpGVurmMRS9kxbOq_d13-RApE_lR2nN3inYcbVc3wyZmvKGXibs9JFRIV4-Q';
+
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const rawData = window.atob(base64);
+  return Uint8Array.from([...rawData].map(char => char.charCodeAt(0)));
+}
+
+function iniciarNotificacoes() {
+  // Não oferece de novo se o usuário já decidiu antes (aceitou, recusou ou já está inscrito)
+  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+  if (localStorage.getItem('beua14_notif_decidido') === '1') return;
+  if (Notification.permission === 'denied') return;
+
+  setTimeout(() => {
+    const card = document.getElementById('notif-card');
+    if (card) card.classList.add('visible');
+  }, 10000);
+}
+
+document.getElementById('notif-close')?.addEventListener('click', () => {
+  document.getElementById('notif-card').classList.remove('visible');
+  localStorage.setItem('beua14_notif_decidido', '1');
+});
+
+document.getElementById('notif-ativar')?.addEventListener('click', async () => {
+  const btn = document.getElementById('notif-ativar');
+  btn.disabled = true;
+  btn.textContent = 'Ativando...';
+
+  try {
+    const permissao = await Notification.requestPermission();
+    localStorage.setItem('beua14_notif_decidido', '1');
+
+    if (permissao !== 'granted') {
+      document.getElementById('notif-card').classList.remove('visible');
+      return;
+    }
+
+    const registro = await navigator.serviceWorker.register('service-worker.js');
+    const subscription = await registro.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY),
+    });
+
+    await db.from('push_subscriptions').upsert({
+      endpoint: subscription.endpoint,
+      subscription: subscription.toJSON(),
+      ativo: true,
+    }, { onConflict: 'endpoint' });
+
+    btn.textContent = 'Notificações ativadas ✓';
+    setTimeout(() => {
+      document.getElementById('notif-card').classList.remove('visible');
+    }, 1800);
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = 'Ativar notificações';
+    console.error('Erro ao ativar notificações:', e);
+  }
+});
+
 iniciar();
+iniciarNotificacoes();
