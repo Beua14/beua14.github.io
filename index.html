@@ -25,38 +25,37 @@
     </ul>
     <div class="nav-search">
       <i class="fas fa-search"></i>
-      <input id="search-input" type="text" placeholder="Buscar aplicativos...">
+      <input id="search-input" type="text" placeholder="Buscar aplicativos, notícias...">
     </div>
-    <button class="btn-entrar" id="btn-doar" onclick="abrirDoar()">Doar</button>
+    <button class="btn-doar" id="btn-doar" onclick="abrirDoar()"><i class="fas fa-heart"></i> Doar</button>
   </div>
 </nav>
 
 <section class="hero" id="inicio">
+  <div class="hero-bg-fx" aria-hidden="true">
+    <div class="fx-orb fx-orb-1"></div>
+    <div class="fx-orb fx-orb-2"></div>
+    <div class="fx-lines"></div>
+    <div class="fx-particles" id="fx-particles"></div>
+  </div>
+
+  <button class="hero-arrow hero-arrow-left" onclick="heroSliderMove(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="hero-arrow hero-arrow-right" onclick="heroSliderMove(1)"><i class="fas fa-chevron-right"></i></button>
+
   <div class="hero-inner">
-    <div class="hero-left reveal">
-      <h1 class="hero-title">Descubra.<br>Baixe.<br><span class="text-brand">Aproveite.</span></h1>
-      <p class="hero-subtitle">O melhor lugar para descobrir e baixar aplicativos Android de forma segura e rápida.</p>
-      <div class="hero-buttons">
-        <a href="#aplicativos" class="btn btn-brand">Explorar Aplicativos <i class="fas fa-arrow-right"></i></a>
-        <a href="#categorias" class="btn btn-dark"><i class="fas fa-grip"></i> Ver Categorias</a>
-      </div>
-      <div class="hero-mini-cards">
-        <div class="mini-card"><i class="fas fa-shield-check"></i><div><strong>100% Seguro</strong><span>Verificado e testado</span></div></div>
-        <div class="mini-card"><i class="fas fa-bolt"></i><div><strong>Downloads Rápidos</strong><span>Servidores otimizados</span></div></div>
-        <div class="mini-card"><i class="fas fa-rotate"></i><div><strong>Sempre Atualizado</strong><span>Novidades diárias</span></div></div>
-      </div>
-    </div>
+    <div class="hero-left" id="hero-left"></div>
 
     <div class="hero-right reveal">
       <div class="phone-glow"></div>
       <div class="phone-mockup">
+        <div class="phone-reflection"></div>
         <div class="phone-notch"></div>
         <div class="phone-screen" id="phone-screen"></div>
         <div class="phone-bar"></div>
       </div>
-      <div class="floating-card fc-1 reveal"><i class="fas fa-shield-check"></i><div><strong>Verificado</strong><span>Todos os apps verificados</span></div></div>
-      <div class="floating-card fc-2 reveal"><i class="fas fa-bolt"></i><div><strong>Rápido</strong><span>Downloads até 10x mais rápidos</span></div></div>
-      <div class="floating-card fc-3 reveal"><i class="fas fa-lock"></i><div><strong>Seguro</strong><span>Sem vírus ou malware</span></div></div>
+      <div class="floating-card fc-1"><i class="fas fa-shield-halved"></i><div><strong>Verificado</strong><span>Todos os apps verificados</span></div></div>
+      <div class="floating-card fc-2"><i class="fas fa-bolt"></i><div><strong>Rápido</strong><span>Downloads até 10x mais rápidos</span></div></div>
+      <div class="floating-card fc-3"><i class="fas fa-lock"></i><div><strong>Seguro</strong><span>Sem vírus ou malware</span></div></div>
     </div>
   </div>
 </section>
@@ -74,8 +73,8 @@
 <section id="aplicativos" class="section">
   <div class="section-inner">
     <div class="section-header reveal">
-      <h2>Novidades</h2>
-      <a href="#" class="ver-todas">Ver todas</a>
+      <h2>Aplicativos <span class="text-brand">em destaque</span></h2>
+      <a href="#" class="ver-todas">Ver todos</a>
     </div>
     <div class="novidades-carousel" id="novidades-carousel"></div>
   </div>
@@ -136,6 +135,16 @@
       <ul id="footer-categorias"></ul>
     </div>
     <div class="footer-col">
+      <h4>Suporte</h4>
+      <ul>
+        <li><a href="#">Como baixar</a></li>
+        <li><a href="#">Segurança</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Termos de uso</a></li>
+        <li><a href="mailto:rodrigsbeua@gmail.com">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
       <h4>Estatísticas</h4>
       <ul class="footer-stats">
         <li><i class="fas fa-cubes"></i> Apps disponíveis <strong id="stat-apps">-</strong></li>
@@ -147,7 +156,7 @@
   <div class="footer-bottom">
     <p>&copy; <span id="ano-atual"></span> <span id="footer-nome-site">BEUA14</span>. Todos os direitos reservados.</p>
     <div class="footer-links-legais">
-      <a href="#">Privacidade</a><a href="#">Termos</a><a href="#" id="footer-contato-link">Contato</a>
+      <a href="#">Privacidade</a><a href="#">Termos</a><a href="mailto:rodrigsbeua@gmail.com">Contato</a>
     </div>
   </div>
 </footer>
