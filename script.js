@@ -582,7 +582,8 @@ function iniciarNotificacoes() {
 
 document.getElementById('notif-close')?.addEventListener('click', () => {
   document.getElementById('notif-card').classList.remove('visible');
-  localStorage.setItem('beua14_notif_decidido', '1');
+  // Não grava "decidido" aqui de propósito — se a pessoa só fechou sem responder
+  // ao pedido de permissão, o toast deve aparecer de novo em uma próxima visita.
 });
 
 document.getElementById('notif-ativar')?.addEventListener('click', async () => {
